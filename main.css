@@ -11,6 +11,14 @@
   justify-content: center;
 }
 
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
 .full-width {
   width: 100%;
 }
@@ -58,6 +66,7 @@ body {
 
 .post {
   height: 98%;
+  position: relative;
   width: 295px;
   flex-direction: column;
   background: black;
@@ -67,6 +76,7 @@ body {
 .profile-information {
   display: flex;
   gap: 10%;
+  width: 60%;
 }
 
 .author {
@@ -83,6 +93,7 @@ body {
 
 .profile-picture {
   height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
@@ -112,6 +123,9 @@ body {
 
 .interact {
   justify-content: space-between;
+}
+
+.icons {
   font-size: 21px;
 }
 
@@ -125,7 +139,7 @@ body {
 }
 
 .post-age,
-.comment-link {
+.comment-link, .reply-button {
   color: #acacac;
 }
 
@@ -138,3 +152,96 @@ body {
   margin-top: 0;
   font-size: 14px;
 }
+
+.comments, .likes {
+  background-color: aqua;
+  z-index: 100;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: black;
+  border-radius: 8px;
+}
+
+.comment-header, .likes-header {
+  gap: 25%;
+  padding: 14px 0px;
+  border-bottom: 1px gray solid;
+}
+
+.close-comments {
+  padding: 7px;
+}
+
+.comment-container{
+  padding: 10px 12px 0 12px;
+  overflow-y: overlay;
+  scrollbar-width: none;
+}
+
+.user {
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+.comment {
+  justify-content: space-between;
+}
+
+.comment-information {
+  width: 60%;
+}
+
+
+.comment-text {
+  margin-top: 9px;
+  margin-bottom: 5px;
+}
+
+.reply-button {
+  font-size: 15px;
+  margin-top: 0;
+
+}
+
+.reply-comment-information {
+  width: 50%;
+}
+
+.reply {
+  justify-content: flex-end;
+  gap: 5%;
+}
+
+.emojis{
+  list-style-type: none;
+  padding: 0;
+  justify-content: space-evenly;
+  font-size: 21px;
+  margin: 0px 0px;
+  padding: 10px 0px;
+  border-top: 1px gray solid;
+}
+
+.new-comment {
+  margin: 0px 0px 10px 0px;
+}
+
+.comment-input {
+  background-color: transparent;
+  border: 1px gray solid;
+  border-radius: 17px;
+  color: white;
+  padding: 5px 11px;
+}
+
+.write-comment {
+  gap: 4%;
+}
+
