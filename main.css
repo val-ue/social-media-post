@@ -55,7 +55,7 @@ p {
 }
 
 body {
-  background-color: #d8a7d8;
+  background-color: #a7a7d8;
   color: white;
   font-family: "Rubik", serif;
   font-size: 16px;
@@ -71,6 +71,7 @@ body {
   flex-direction: column;
   background: black;
   border-radius: 8px;
+  box-shadow: -5px 5px 10px rgba(98, 94, 94, 0.24);
 }
 
 .profile-information {
@@ -113,7 +114,7 @@ body {
 
 .img-post {
   height: 100%;
-  height: 130%;
+  min-width: 100%;
 }
 
 .social {
@@ -138,8 +139,14 @@ body {
   font-weight: 600;
 }
 
+.others:hover {
+  text-decoration: underline;
+}
+
 .post-age,
-.comment-link, .reply-button {
+.comment-link,
+.reply-button,
+.long-name {
   color: #acacac;
 }
 
@@ -153,7 +160,8 @@ body {
   font-size: 14px;
 }
 
-.comments, .likes {
+.comments,
+.likes {
   background-color: aqua;
   z-index: 100;
   position: absolute;
@@ -169,17 +177,27 @@ body {
   border-radius: 8px;
 }
 
-.comment-header, .likes-header {
-  gap: 25%;
+.comment-header,
+.likes-header {
   padding: 14px 0px;
   border-bottom: 1px gray solid;
 }
 
-.close-comments {
+.comment-header {
+  gap: 21%;
+}
+
+.likes-header {
+  gap: 25%;
+}
+
+.close-comments,
+.close-likes {
   padding: 7px;
 }
 
-.comment-container{
+.comment-container,
+.like-container {
   padding: 10px 12px 0 12px;
   overflow-y: overlay;
   scrollbar-width: none;
@@ -190,7 +208,8 @@ body {
   margin-bottom: 7px;
 }
 
-.comment {
+.comment,
+.like {
   justify-content: space-between;
 }
 
@@ -198,16 +217,19 @@ body {
   width: 60%;
 }
 
-
 .comment-text {
   margin-top: 9px;
   margin-bottom: 5px;
 }
 
-.reply-button {
+.reply-button,
+.long-name {
   font-size: 15px;
   margin-top: 0;
+}
 
+.reply-button:hover {
+  text-decoration: underline;
 }
 
 .reply-comment-information {
@@ -219,7 +241,7 @@ body {
   gap: 5%;
 }
 
-.emojis{
+.emojis {
   list-style-type: none;
   padding: 0;
   justify-content: space-evenly;
@@ -245,3 +267,32 @@ body {
   gap: 4%;
 }
 
+.like-information {
+  margin-left: 5px;
+}
+
+.like {
+  margin-bottom: 6px;
+}
+
+.follow {
+  background-color: #23aeff;
+  color: white;
+  border-radius: 6px;
+  border-style: none;
+  height: 20px;
+  font-size: 16px;
+  height: 31px;
+  min-width: 71px;
+}
+
+.following {
+  background-color: #616b71;
+  color: white;
+  border-radius: 6px;
+  border-style: none;
+  height: 20px;
+  font-size: 16px;
+  height: 31px;
+  min-width: 71px;
+}
