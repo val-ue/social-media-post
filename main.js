@@ -1,9 +1,12 @@
+import { faker } from "https://cdn.skypack.dev/@faker-js/faker@v8.3.0";
+
 const get = function (selector) {
   return document.querySelector(selector);
 };
 
 const viewAllComments = get(".comment-link");
-const heart = document.querySelectorAll(".fa-heart");
+const hearts = document.querySelectorAll(".fa-heart");
+const bookmark = document.querySelector(".fa-bookmark");
 const post = get(".post");
 const showOthers = get(".others");
 const seeMore = get(".see-more");
@@ -13,157 +16,94 @@ const spotlight = get(".spotlight");
 
 const comments = [
   {
-    username: "e.mendrala",
-    profilePicture:
-      "https://images.unsplash.com/photo-1579176647030-bd86f6fd4e1e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    username: faker.internet.userName(),
+    profilePicture: faker.image.urlPicsumPhotos(),
     comment: "reminds me of road trips through the countryside",
     replies: [
       {
-        username: "nostalgic_nina",
-        profilePicture:
-          "https://images.unsplash.com/photo-1686771434157-7d488edc8415?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "OMG yes! You just unlocked a core memory for me 😆😆",
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "OMG yes! You just unlocked a core memory for me 😆😆"
       },
       {
-        username: "cloudwatcher89",
-        profilePicture:
-          "https://images.unsplash.com/photo-1718306502553-0108d0bc36c7?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "Agreed!",
-      },
-    ],
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "Agreed!"
+      }
+    ]
   },
   {
-    username: "nature_lover23",
-    profilePicture:
-      "https://images.unsplash.com/photo-1505628346881-b72b27e84530?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    username: faker.internet.userName(),
+    profilePicture: faker.image.urlPicsumPhotos(),
     comment: "such a perfect place..",
     replies: [
       {
-        username: "sereneminds2",
-        profilePicture:
-          "https://images.unsplash.com/photo-1537984822441-cff330075342?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "Imagine just lying here and listening to the wind… 😌",
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "Imagine just lying here and listening to the wind… 😌"
       },
       {
-        username: "55sunnydays55",
-        profilePicture:
-          "https://images.unsplash.com/photo-1607478900766-efe13248b125?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "Golden hour here must be unreal!",
-      },
-    ],
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "Golden hour here must be unreal!"
+      }
+    ]
   },
   {
-    username: "sunset_sophie",
-    profilePicture:
-      "https://images.unsplash.com/photo-1507281736509-c6289f1ea0f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    username: faker.internet.userName(),
+    profilePicture: faker.image.urlPicsumPhotos(),
     comment: "Bet it looks even better at sunset!",
     replies: [
       {
-        username: "techytim",
-        profilePicture:
-          "https://images.unsplash.com/photo-1554630981-a73ffb5ed6f8?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "LOL! Literally thought the same thing ",
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "LOL! Literally thought the same thing "
       },
       {
-        username: "simplicitySeek",
-        profilePicture:
-          "https://images.unsplash.com/photo-1464295440335-ee082a75ccca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        comment: "just nature. perfect🌿🌿🌿",
-      },
-    ],
-  },
+        username: faker.internet.userName(),
+        profilePicture: faker.image.urlPicsumPhotos(),
+        comment: "just nature. perfect🌿🌿🌿"
+      }
+    ]
+  }
 ];
 
-const likes = [
-  {
-    username: "mitchc",
-    longName: "Mitch Carter",
-    profilePicture:
-      "https://images.unsplash.com/photo-1742268350465-35d7baae61fa?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "callieee",
-    longName: "Callie ✨",
-    profilePicture:
-      "https://images.unsplash.com/photo-1741850820739-109eb983c478?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "jaydenw",
-    longName: "Jayden Woods",
-    profilePicture:
-      "https://images.unsplash.com/photo-1741812191037-96bb5f12010a?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "lilam",
-    longName: "Lila Marie",
-    profilePicture:
-      "https://images.unsplash.com/photo-1741891863771-7e5c33f82818?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "eli.txt",
-    longName: "Eli Thompson",
-    profilePicture:
-      "https://images.unsplash.com/photo-1742156345582-b857d994c84e?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMnx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "nature_lover23",
-    longName: "Cassidy James",
-    profilePicture:
-      "https://images.unsplash.com/photo-1505628346881-b72b27e84530?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "bennybikes",
-    longName: "Benny Roberts",
-    profilePicture:
-      "https://images.unsplash.com/photo-1742414348804-3b1a648855d1?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "mars.jpg",
-    longName: "Marissa Lane",
-    profilePicture:
-      "https://images.unsplash.com/photo-1742107082666-dc8b5282b996?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "dani_dani",
-    longName: "Dani Lopez",
-    profilePicture:
-      "https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?q=80&w=1199&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "alexnotalex",
-    longName: "Alex Greene",
-    profilePicture:
-      "https://images.unsplash.com/photo-1738236013982-9449791344de?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "wesleyt",
-    longName: "Wesley Taylor",
-    profilePicture:
-      "https://images.unsplash.com/photo-1683512611593-59aa784f5f16?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "tash.a",
-    longName: "Natasha Evans",
-    profilePicture:
-      "https://images.unsplash.com/photo-1736156725121-027231636f9d?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "zekesworld",
-    longName: "Zeke Harris",
-    profilePicture:
-      "https://images.unsplash.com/photo-1734966901441-ac6c1fff1fd2?q=80&w=1117&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    username: "finnwave",
-    longName: "Finn Carter",
-    profilePicture:
-      "https://images.unsplash.com/photo-1738070593303-fbb151013701?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
+//add likes to array
+const likes = [];
+
+for (let i = 0; i <= Math.floor(Math.random() * 30); i++) {
+  const oneLike = {
+    username: faker.internet.userName(),
+    longName: faker.person.fullName(),
+    profilePicture: faker.image.urlPicsumPhotos()
+  };
+
+  likes.push(oneLike);
+}
 
 likeNumber.innerText = likes.length;
 commentNumber.innerText = comments.length;
-spotlight.innerText = likes[1].username;
+spotlight.innerText = likes[0].username;
+
+//heart function
+
+const fillHeart = function (heart) {
+  heart.addEventListener("click", function () {
+    if (heart.classList.contains("fa-regular")) {
+      heart.classList.remove("fa-regular");
+      heart.classList.add("fa-solid");
+    } else {
+      heart.classList.add("fa-regular");
+      heart.classList.remove("fa-solid");
+    }
+  });
+};
+
+hearts.forEach(function (heart) {
+  fillHeart(heart);
+});
+
+fillHeart(bookmark);
 
 //Show comments
 
@@ -220,13 +160,16 @@ viewAllComments.addEventListener("click", function () {
         <div class="comment-information">
           <p class="user medium-bold-font">${comment.username}</p>
           <p class="comment-text very-thin-font">${comment.comment}</p>
-          <p class="reply-button very-thin-font pointer">Reply</p>
+          <p class="reply-button very-thin-font pointer">Replies</p>
         </div>
         <i class="icons fa-regular fa-heart pointer"></i>
       </div>
     `;
 
     commentContainer.appendChild(singleComment);
+
+    const newHeart = singleComment.querySelector('.fa-heart');
+    newHeart.addEventListener('click', fillHeart(newHeart));
 
     let isReplyOn = false;
 
@@ -255,6 +198,9 @@ viewAllComments.addEventListener("click", function () {
             </div>
           `;
           singleComment.appendChild(replyBox);
+
+          const newReplyHeart = replyBox.querySelector('.fa-heart');
+          newReplyHeart.addEventListener('click', fillHeart(newReplyHeart));
         });
       } else {
         isReplyOn = false;
@@ -265,6 +211,7 @@ viewAllComments.addEventListener("click", function () {
         });
       }
     });
+
   });
 
   const closeComments = commentBox.querySelector(".close-comments");

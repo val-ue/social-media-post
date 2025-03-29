@@ -66,6 +66,7 @@ body {
 
 .post {
   height: 98%;
+  min-height: 400px;
   position: relative;
   width: 295px;
   flex-direction: column;
@@ -206,6 +207,7 @@ body {
 .user {
   margin-top: 0;
   margin-bottom: 7px;
+  overflow-wrap: break-word;
 }
 
 .comment,
@@ -269,6 +271,11 @@ body {
 
 .like-information {
   margin-left: 5px;
+  width: 66%;
+}
+
+.complete-like-information {
+  width: 66%;
 }
 
 .like {
