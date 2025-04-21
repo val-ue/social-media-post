@@ -65,10 +65,10 @@ body {
 }
 
 .post {
-  height: 98%;
+  height: 80%;
   min-height: 400px;
   position: relative;
-  width: 295px;
+  width: 370px;
   flex-direction: column;
   background: black;
   border-radius: 8px;
@@ -234,7 +234,7 @@ body {
   text-decoration: underline;
 }
 
-.reply-comment-information {
+.reply-information {
   width: 50%;
 }
 
@@ -258,11 +258,16 @@ body {
 }
 
 .comment-input {
+  width: 60%;
   background-color: transparent;
   border: 1px gray solid;
   border-radius: 17px;
   color: white;
   padding: 5px 11px;
+}
+
+input:focus {
+  outline: 2px solid gray;
 }
 
 .write-comment {

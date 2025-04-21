@@ -14,59 +14,41 @@ const likeNumber = get(".like-number");
 const commentNumber = get(".comment-number");
 const spotlight = get(".spotlight");
 
-const comments = [
-  {
-    username: faker.internet.userName(),
-    profilePicture: faker.image.urlPicsumPhotos(),
-    comment: "reminds me of road trips through the countryside",
-    replies: [
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "OMG yes! You just unlocked a core memory for me 😆😆"
-      },
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "Agreed!"
-      }
-    ]
-  },
-  {
-    username: faker.internet.userName(),
-    profilePicture: faker.image.urlPicsumPhotos(),
-    comment: "such a perfect place..",
-    replies: [
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "Imagine just lying here and listening to the wind… 😌"
-      },
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "Golden hour here must be unreal!"
-      }
-    ]
-  },
-  {
-    username: faker.internet.userName(),
-    profilePicture: faker.image.urlPicsumPhotos(),
-    comment: "Bet it looks even better at sunset!",
-    replies: [
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "LOL! Literally thought the same thing "
-      },
-      {
-        username: faker.internet.userName(),
-        profilePicture: faker.image.urlPicsumPhotos(),
-        comment: "just nature. perfect🌿🌿🌿"
-      }
-    ]
-  }
+const exampleText = [
+  "reminds me of road trips through the countryside",
+  "OMG yes! You just unlocked a core memory for me 😆😆",
+  "Wow!",
+  "such a perfect place..",
+  "Imagine just lying here and listening to the wind.. 😌",
+  "Golden hour here must be unreal!",
+  "Bet it looks even better at sunset",
+  "LOL! Literally thought the same thing ",
+  "just nature. perfect🌿🌿🌿",
+  "nice"
 ];
+
+let comments = [];
+
+function createComment() {
+  return {
+    username: faker.internet.userName(),
+    profilePicture: faker.image.urlPicsumPhotos(),
+    comment: exampleText[Math.floor(Math.random() * exampleText.length)],
+    replies: []
+  };
+}
+
+for (let i = 0; i <= Math.floor(Math.random() * 20); i++) {
+  const comment = createComment();
+
+  for (let i = 0; i <= Math.floor(Math.random() * 5); i++) {
+    const reply = createComment();
+    comment.replies.push(reply);
+  }
+  comments.push(comment);
+}
+
+console.log(comments);
 
 //add likes to array
 const likes = [];
@@ -149,27 +131,31 @@ viewAllComments.addEventListener("click", function () {
 
   const commentContainer = get(".comment-container");
 
-  comments.forEach(function (comment) {
-    const singleComment = document.createElement("div");
-    singleComment.innerHTML = `
-      <div class ="comment flex">
+  const commentHtml = function(text, type) {
+    return `
+      <div class ="${text} flex">
         <img
           class="profile-picture align-items-center"
-          src="${comment.profilePicture}"
+          src="${type.profilePicture}"
         />
-        <div class="comment-information">
-          <p class="user medium-bold-font">${comment.username}</p>
-          <p class="comment-text very-thin-font">${comment.comment}</p>
+        <div class="${text}-information">
+          <p class="user medium-bold-font">${type.username}</p>
+          <p class="comment-text very-thin-font">${type.comment}</p>
           <p class="reply-button very-thin-font pointer">Replies</p>
         </div>
         <i class="icons fa-regular fa-heart pointer"></i>
       </div>
     `;
+  };
+
+  comments.forEach(function (comment) {
+    const singleComment = document.createElement("div");
+    singleComment.innerHTML = commentHtml("comment", comment);
 
     commentContainer.appendChild(singleComment);
 
-    const newHeart = singleComment.querySelector('.fa-heart');
-    newHeart.addEventListener('click', fillHeart(newHeart));
+    const newHeart = singleComment.querySelector(".fa-heart");
+    newHeart.addEventListener("click", fillHeart(newHeart));
 
     let isReplyOn = false;
 
@@ -183,24 +169,12 @@ viewAllComments.addEventListener("click", function () {
           const replyBox = document.createElement("div");
           replyBox.classList.add("reply-box");
 
-          replyBox.innerHTML = `
-            <div class ="reply flex">
-              <img
-                class="profile-picture align-items-center"
-                src="${reply.profilePicture}"
-              />
-              <div class="reply-comment-information">
-                <p class="user medium-bold-font">${reply.username}</p>
-                <p class="comment-text very-thin-font">${reply.comment}</p>
-                <p class="reply-button very-thin-font pointer">Reply</p>
-              </div>
-              <i class="icons fa-regular fa-heart pointer"></i>
-            </div>
-          `;
+          replyBox.innerHTML = commentHtml("reply", reply);
+
           singleComment.appendChild(replyBox);
 
-          const newReplyHeart = replyBox.querySelector('.fa-heart');
-          newReplyHeart.addEventListener('click', fillHeart(newReplyHeart));
+          const newReplyHeart = replyBox.querySelector(".fa-heart");
+          newReplyHeart.addEventListener("click", fillHeart(newReplyHeart));
         });
       } else {
         isReplyOn = false;
@@ -211,7 +185,6 @@ viewAllComments.addEventListener("click", function () {
         });
       }
     });
-
   });
 
   const closeComments = commentBox.querySelector(".close-comments");
